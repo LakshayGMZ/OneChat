@@ -1,5 +1,4 @@
 /node_modules
-/client/README.md
 /client/.gitignore
 /client/node_modules
 /.vscode
