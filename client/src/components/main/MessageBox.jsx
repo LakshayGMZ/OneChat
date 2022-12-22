@@ -6,9 +6,8 @@ const BoxCSS = {
     width: "fit-content",
     minHeight: "50px",
     margin: "20px",
-    borderRadius: "7px",
-    diplay: "flex",
     position: "relative",
+    display: "flex",
 };
 
 const PFPArea = {
@@ -17,8 +16,11 @@ const PFPArea = {
     aspectRatio: "1/1",
     borderRadius: "50%",
     boxSizing: "border-box",
-    display: "inline-block",
-    margin: "5px",
+    display: "inline-flex",
+    marginRight: "15px",
+    alignSelf: "baseline",
+    // position: "absolute",
+    // top: 0
 };
 
 const DividerArea = {
@@ -28,29 +30,43 @@ const DividerArea = {
     position: "absolute",
     top: 0,
     bottom: 0,
-    margin: "2px 5px"
+    margin: "3px 0"
 }
 const MessageArea = {
-    marginLeft: "15px",
+    marginLeft: "10px",
     display: "inline-block",
     color: "white"
+};
+
+const AuthorArea = {
+
+    color: "white",
+    fontSize: "1.2rem"
 };
 
 export default function MessageBox(props) {
 
     return (
         <div style={BoxCSS}>
+
             <div style={PFPArea}>
                 {/* PFP Area */}
 
             </div>
-            <div style={DividerArea}></div>
-            {/* <Divider orientation="vertical" variant="fullHeight"/> */}
-            <div style={MessageArea}>
-                {/* Chat Area */}
-                <p>{props.content}</p>
-            </div>
 
+            <div style={{ display: "inline-block" }}>
+                <div style={AuthorArea}>
+                    {props.author}
+                </div>
+
+                <div style={{ position: "relative" }}>
+                    <div style={DividerArea}></div>
+                    <div style={MessageArea}>
+                        {/* Chat Area */}
+                        <p>{props.content}</p>
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }

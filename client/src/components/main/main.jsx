@@ -71,21 +71,22 @@ export default function Main() {
                 },
                 method: "GET"
             })
-            .then(res => res.json())
-            .then(res => {
-                console.log(res);
-                setMessages(res.map((message) => 
-                    <div>
-                    <MessageBox 
-                        key={message.id}
-                        content={message.content}
-                    />
-                    </div>
-                ));
-                setTimeout(() => {
-                    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth', block: "end" });
-                }, 200);
-            })
+                .then(res => res.json())
+                .then(res => {
+                    console.log(res);
+                    setMessages(res.map((message) =>
+                        <div>
+                            <MessageBox
+                                key={message.id}
+                                content={message.content}
+                                author={message.username}
+                            />
+                        </div>
+                    ));
+                    setTimeout(() => {
+                        messagesEndRef.current?.scrollIntoView({ behavior: 'smooth', block: "end" });
+                    }, 200);
+                })
         }
     }, [timestamp]);
 

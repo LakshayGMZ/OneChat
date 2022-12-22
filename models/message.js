@@ -7,7 +7,8 @@ const messageSchema = new Schema({
         type: String,
         unique: true,
     },
-    uuid: String
+    uuid: String,
+    username: String,
 });
 
 const Message = new model("message", messageSchema);

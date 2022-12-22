@@ -1,6 +1,7 @@
 const express = require('express');
 const { JWTTokenVerify } = require('../middlewares');
 const { Message } = require('../models/message')
+const { User } = require('../models/user')
 const router = express.Router();
 require('dotenv').config();
 
@@ -9,14 +10,23 @@ router.use(JWTTokenVerify);
 router.post('/message', function(req, res) {
     const body = req.body;
     const timestamp = parseInt(new Date().getTime()/1000);
-    const data = {
-        content: body.content,
-        timestamp: String(timestamp),
-        uuid: body.uuid,
-        id: String(timestamp + Math.floor((Math.random() * 100000) + 1) + Math.floor((Math.random() * 1000) + 1))
-    };
-    (new Message(data)).save();
-    res.status(200).send({error: 0, ...data});
+    const token = req.headers.authorization;
+    User.findOne({token: token}, (err, result) => {
+        if (!err && result) {
+            const data = {
+                content: body.content,
+                timestamp: String(timestamp),
+                uuid: body.uuid,
+                username: result.username,
+                id: String(timestamp + Math.floor((Math.random() * 1000000) + 1) + Math.floor((Math.random() * 10000) + 1))
+            };
+            (new Message(data)).save();
+            res.status(200).send({error: 0, ...data});
+
+        } else {
+            res.status(401).send({error: 1014, message: "some err eccured"})
+        };
+    })
 });
 
 router.get('/messages', function(req, res) {
