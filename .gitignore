@@ -3,3 +3,6 @@
 /client/node_modules
 /.vscode
 /.env
+/.replit
+/replit.nix
+/.upm
