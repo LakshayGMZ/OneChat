@@ -5,7 +5,7 @@ const passport = require('passport');
 const { v4: uuidv4 } = require('uuid');
 const JWT = require('jsonwebtoken');
 
-require('dotenv').config();
+require('dotenv').config({path: "../.env"});
 
 const { User } = require("../models/user")
 

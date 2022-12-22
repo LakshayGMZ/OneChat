@@ -1,5 +1,6 @@
 const JWT = require("jsonwebtoken");
 const express = require("express");
+require('dotenv').config({path: "../.env"});
 
 exports.JWTTokenVerify = (req, res, next) => {
     const token = req.headers.authorization;

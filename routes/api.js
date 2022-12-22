@@ -3,7 +3,7 @@ const { JWTTokenVerify } = require('../middlewares');
 const { Message } = require('../models/message')
 const { User } = require('../models/user')
 const router = express.Router();
-require('dotenv').config();
+require('dotenv').config({path: "../.env"});
 
 router.use(JWTTokenVerify);
 
