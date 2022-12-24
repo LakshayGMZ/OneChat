@@ -58,6 +58,7 @@ export default function Main() {
     const navigate = useNavigate();
     const [messages, setMessages] = useState([]);
     const [timestamp, setTimestamp] = useState(0);
+    const [scrollBehaviour, setScroll] = useState('auto');
     const messagesEndRef = useRef(null);
 
     useEffect(() => {
@@ -84,8 +85,9 @@ export default function Main() {
                         </div>
                     ));
                     setTimeout(() => {
-                        messagesEndRef.current?.scrollIntoView({ behavior: 'smooth', block: "end" });
+                        messagesEndRef.current?.scrollIntoView({ behavior: scrollBehaviour, block: "end" });
                     }, 200);
+                    setScroll('smooth');
                 })
         }
     }, [timestamp]);
