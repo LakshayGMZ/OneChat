@@ -11,8 +11,9 @@ router.post('/message', function(req, res) {
     const body = req.body;
     const timestamp = parseInt(new Date().getTime()/1000);
     const token = req.headers.authorization;
-    User.findOne({token: token}, (err, result) => {
+    User.findOne({accessToken: token}, (err, result) => {
         if (!err && result) {
+            console.log(result);
             const data = {
                 content: body.content,
                 timestamp: String(timestamp),
