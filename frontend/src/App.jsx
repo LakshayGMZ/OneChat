@@ -12,7 +12,7 @@ import "./stylesheets/index.css"
 
 function App() {
 
-  axios.defaults.baseURL = process.env.BaseURL;
+  axios.defaults.baseURL = import.meta.env.VITE_BASE_URL;
   axios.defaults.headers.common['Authorization'] = localStorage.token;
   //axios.defaults.baseURL = "";
 
