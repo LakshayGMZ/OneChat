@@ -4,12 +4,15 @@ import Login from './components/login'
 import Register from './components/register'
 import MainApp from './components/app/mainapp';
 import axios from 'axios'
+import dotenv from 'dotenv'
+
+dotenv.config();
 
 import "./stylesheets/index.css"
 
 function App() {
 
-  axios.defaults.baseURL = "http://localhost:8000/";
+  axios.defaults.baseURL = process.env.BaseURL;
   axios.defaults.headers.common['Authorization'] = localStorage.token;
   //axios.defaults.baseURL = "";
 
