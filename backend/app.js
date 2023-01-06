@@ -6,6 +6,8 @@ const logger = require('morgan');
 const session = require('express-session');
 const passport = require('passport');
 const bodyParser = require('body-parser');
+const cors = require('cors')
+
 const { User } = require("./models/user")
 const auth = require('./routes/auth');
 const api = require('./routes/api');
@@ -19,6 +21,7 @@ function errorHandler (err, req, res, next) {
 }
 
 app.use(logger('dev'));
+app.use(cors());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(cookieParser());

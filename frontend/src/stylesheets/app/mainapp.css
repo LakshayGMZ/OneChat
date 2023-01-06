@@ -1,0 +1,175 @@
+.BackgroundBlurFilter {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    backdrop-filter: blur(4px);
+}
+
+.MarginedRoundedContainer {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: 20px;
+    border-radius: 4px;
+    /* box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23); */
+    display: inline-flex;
+    flex-direction: row;
+    background-color: whitesmoke;
+}
+
+.SearchBar {
+    height: 4rem;
+    background-color: #6D9886;
+    border-top-left-radius: 4px;
+    display: flex;
+    align-items: center;
+}
+
+.SearchBar fieldset {
+    margin: 3px 7px;
+    border: none;
+    background-color: rgba(0, 0, 0, 0.22);
+    border-radius: 6px;
+}
+
+.MemberList {
+    border-radius: px;
+    flex-grow: 1;
+    background-color: lightgray;
+}
+
+.UserStatusBar {
+    width: 100%;
+    background-color: #6D9886;
+    height: 4rem;
+    border-bottom-left-radius: 4px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+
+.UserStatusIcon {
+    color: white;
+    margin: auto 3px;
+}
+
+.UserStatusIcon .MuiIconButton-root {
+    border-radius: 6px !important;
+}
+
+.UserStatusIcon .MuiIconButton-root:hover {
+    background-color: rgba(0, 0, 0, 0.22) ;
+}
+
+.ChatWindow {
+    flex-grow: 1;
+    border-radius: 4px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.ChatScreen {
+    flex-grow: 1;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column-reverse;
+    overflow: auto;
+}
+
+.ScrollingChats {
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.InputBoxMainChat {
+    display: flex;
+    align-items: center;
+    height: fit-content;
+    background-color: lightgrey;
+    margin: 20px;
+    margin-top: 2px;
+    border-radius: 10px;
+}
+
+.InputBoxMainChat fieldset {
+    border: none;
+}
+
+.MemberSelectorPane {
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    position: relative;
+}
+
+.ChatStatusPane {
+    min-height: 4rem;
+    background-color: #6D9886;
+    border-top-right-radius: 4px;
+    display: flex;
+    justify-content: right;
+}
+
+
+.MemberBoxContainer {
+    width: inherit;
+
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    margin: 10px;
+    border-radius: 8px;
+}
+
+.MemberBoxContainer:hover {
+    background-color: rgba(0, 0, 0, 0.22);
+}
+
+.MemberPfpArea {
+    border-radius: 50px;
+    background-color: grey;
+    aspect-ratio: 1/1;
+    color: white;
+    width: fit-content;
+    margin: 0 10px;
+}
+
+.MemberNameHolder {
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.MessageBoxContainer {
+    display: flex;
+    flex-direction: row;
+    margin: 1.2rem 0;
+}
+
+.MessagePFPArea {
+    aspect-ratio: 1;
+    height: fit-content;
+    border-radius: 50%;
+    background-color: grey;
+    margin-right: 7px;
+    color: whitesmoke
+}
+
+.MessageContentContainer {
+    background-color: lightgray;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    padding: 7px;
+    font-weight: 400;
+}
+
+.MessageAuthor {
+    color: #353935;
+    font-weight: 500;
+}

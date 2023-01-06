@@ -1,34 +1,28 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Login from './components/login'
+import Register from './components/register'
+import MainApp from './components/app/mainapp';
+import axios from 'axios'
+
+import "./stylesheets/index.css"
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  axios.defaults.baseURL = "http://localhost:8000/";
+  axios.defaults.headers.common['Authorization'] = localStorage.token;
+  //axios.defaults.baseURL = "";
+
 
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route index element={<Login />} />
+        <Route path="register" element={<Register />} />
+        <Route path="app" element={<MainApp />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
-export default App
+export default App;

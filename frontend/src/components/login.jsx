@@ -6,18 +6,11 @@ import HowToRegIcon from '@mui/icons-material/HowToReg';
 
 import React, { ReactDOM, useEffect, useState, } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
-const InputCSS = {
-    display: "flex",
-    margin: "17px 20px",
+import "../stylesheets/login.css"
 
-}
 
-const otherLoginMethods = {
-    margin: "2rem 2rem",
-    fontSize: "1.1rem"
-
-}
 
 
 function Login() {
@@ -26,7 +19,7 @@ function Login() {
 
     useEffect(() => {
         if (localStorage.getItem('token')) {
-            navigate('/main')
+            navigate('/app')
         }
     }, [])
 
@@ -37,14 +30,8 @@ function Login() {
 
     function OnSubmit(event) {
         event.preventDefault();
-        fetch('/api/auth/login', {
-            method: "POST",
-            body: JSON.stringify(FormData),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-            .then(res => res.json())
+        axios.post('/api/auth/login', FormData)
+            .then(res => res.data)
             .then(res => {
                 console.log('res came');
                 console.log(res);
@@ -54,24 +41,27 @@ function Login() {
                     localStorage.setItem('username', res.username);
                     localStorage.setItem('uuid', res.uuid);
                     setFormData({ email: '', password: '' });
-                    navigate("/main");
+                    navigate("/app");
 
                 } else {
                     console.log('reload');
                     window.location.reload();
 
                 }
-            });
+            })
+            .catch((error) => {
+                console.log(error);
+            });;
     }
 
     return (
 
         <Paper elevation={24}>
-            <div style={divContent}>
+            <div className="containerLogin">
                 <Grid container>
 
                     <Grid item>
-                        <div>
+                        <div style={{display: "flex", flexDirection: "column"}}>
 
                             <TextField
                                 label="Email"
@@ -80,7 +70,7 @@ function Login() {
                                 onChange={HandleData}
                                 variant="outlined"
                                 type="email"
-                                style={InputCSS}
+                                className="InputBox"
                             />
 
                             <TextField
@@ -89,7 +79,7 @@ function Login() {
                                 type="password"
                                 value={FormData.password}
                                 onChange={HandleData}
-                                style={InputCSS}
+                                className="InputBox"
                             />
 
                             <Button onClick={OnSubmit} variant="contained" colour="red">Login</Button>
@@ -105,19 +95,19 @@ function Login() {
                     <Grid item style={{ textAlign: "left" }}>
                         <Button variant="contained"
                             href="/register"
-                            style={otherLoginMethods}
+                            className="otherLoginMethods"
                             startIcon={<HowToRegIcon fontSize="large" />}>
                             Register
                         </Button>
                         <br />
                         <Button variant="contained"
-                            style={otherLoginMethods}
+                            className="otherLoginMethods"
                             startIcon={<GoogleIcon fontSize="large" />}>
                             Login with Google
                         </Button>
                         <br />
                         <Button variant="contained"
-                            style={otherLoginMethods}
+                            className="otherLoginMethods"
                             startIcon={<FacebookIcon fontSize="large" />}>
                             Login with Facebook
                         </Button>

@@ -1,0 +1,21 @@
+.RegisterContainer {
+    max-width: fit-content;
+    text-align: center;
+    height: fit-content;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+    background-color: #D3D3D3;
+    border-radius: 12px;
+    padding: 1em 2em;
+    display: flex;
+    flex-direction: column;
+}
+
+.RegisterInputBox {
+    margin: 7px 0 !important;
+    width: 16rem;
+}

@@ -32,13 +32,13 @@ router.post('/message', function(req, res) {
 
 router.get('/messages', function(req, res) {
     const uuid = req.body.uuid;
-    Message.find({}, (err, result) => {
+    Message.find({}).sort({timestamp: -1}).exec((err, result) => {
         if (result) {
             res.status(200).send(result);
         } else {
             res.status(404);
         }
     });
-})
+});
 
 module.exports = router;

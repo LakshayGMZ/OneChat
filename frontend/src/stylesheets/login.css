@@ -1,0 +1,32 @@
+.containerLogin {
+    max-width: fit-content;
+    text-align: center;
+    height: fit-content;
+
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+
+    background-color: #D3D3D3;
+    border-radius: 12px;
+    /* border: "1px black solid", */
+
+    padding: 1em;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.InputBox {
+    margin: 17px 20px !important;
+    display: flex !important;
+}
+
+.otherLoginMethods {
+    margin: 2rem 2rem !important;
+    font-size: 1.1rem !important;
+
+}
