@@ -4,9 +4,6 @@ import Login from './components/login'
 import Register from './components/register'
 import MainApp from './components/app/mainapp';
 import axios from 'axios'
-import dotenv from 'dotenv'
-
-dotenv.config();
 
 import "./stylesheets/index.css"
 
