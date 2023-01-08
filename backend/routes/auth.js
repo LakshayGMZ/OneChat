@@ -38,7 +38,7 @@ router.post('/login', function (req, res) {
 
 router.post('/register', function (req, res) {
     const data = req.body;
-    uuid = String(uuidv4());
+    const uuid = String(uuidv4());
 
     bcrypt.genSalt(parseInt(process.env.salt_rounds), (err, salt) => {
         console.log(err);
