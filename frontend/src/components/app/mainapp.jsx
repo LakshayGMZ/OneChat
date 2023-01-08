@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import {isMobile} from "react-device-detect";
+import {isBrowser} from "react-device-detect";
 import "../../stylesheets/app/mainapp.css"
 import MemberSelector from "./MemberSelector";
 import ChatsWindow from "./ChatsWindow";
@@ -16,7 +16,8 @@ export default function MainApp() {
 
     return (
         <div className="MarginedRoundedContainer">
-            {{isMobile} && <MemberSelector />}
+
+            {isBrowser && <MemberSelector />}
 
             <ChatsWindow />
         </div>
