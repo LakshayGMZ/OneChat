@@ -4,9 +4,7 @@ require('dotenv').config({path: "../.env"});
 
 exports.JWTTokenVerify = (req, res, next) => {
     const token = req.headers.authorization;
-    console.log(token);
     JWT.verify(token, process.env.secret, (err, result) => {
-        console.log(result, err);
         if (!err && result) {
             return next();
         } else {
