@@ -8,5 +8,5 @@ const options = {
     }
 }
 
-export const socket = socketio.connect("ws://localhost:8000/", options);
+export const socket = socketio.connect(import.meta.env.VITE_BASE_URL, options);
 export const SocketContext = React.createContext();
