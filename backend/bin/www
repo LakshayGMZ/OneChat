@@ -13,7 +13,7 @@ const server = http.createServer(app);
 
 const webSocket = new SocketServer(server, {
   cors: {
-    origin: ["http://localhost:5173", "https://OneChat.lakshaygmz.repl.co"],
+    origin: ["http://localhost:5173", "https://1chat.vercel.app"],
     credentials: true,
     allowedHeaders: ["authorization"],
     methods: ["GET", "POST"],
