@@ -119,12 +119,15 @@
 
 .MemberBoxContainer {
     width: inherit;
-
     height: 3rem;
     display: flex;
     align-items: center;
     margin: 10px;
     border-radius: 8px;
+}
+
+.UnsentMessageBox {
+    opacity: .5;
 }
 
 .MemberBoxContainer:hover {

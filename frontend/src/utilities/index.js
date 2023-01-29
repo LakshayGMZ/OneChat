@@ -1,4 +1,4 @@
-const { customAlphabet } = require('nanoid');
+import { customAlphabet } from 'nanoid'
 const numbers = '0123456789';
 
 function genID() {
@@ -7,4 +7,4 @@ function genID() {
     
 }
 
-export default genID
+export default genID;

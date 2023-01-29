@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Divider, IconButton, TextField } from "@mui/material";
+import { Divider, IconButton, modalUnstyledClasses, TextField } from "@mui/material";
 import TextInputArea from "./TextInputArea";
 import MessageBox from "./MessageBox";
 import LogoutIcon from '@mui/icons-material/Logout';
@@ -15,7 +15,7 @@ export default function ChatsWindow() {
             .then(res => {
                 console.log(res);
                 setMessage(res.map(message =>
-                    <MessageBox author={message.username} content={message.content} key={message.id} />
+                    <MessageBox author={message.username} content={message.content} id={message.id} key={message.id} />
                 ));
 
             })
@@ -35,7 +35,7 @@ export default function ChatsWindow() {
             </div>
 
             <div className="ChatScreen">
-                <div className="ScrollingChats">
+                <div className="ScrollingChats" id="ChatsContainer">
                     {Messages}
                     <div ref={messagesEndRef} />
                 </div>
@@ -43,8 +43,9 @@ export default function ChatsWindow() {
 
             {/* <Divider variant="middle" sx={{ margin: "10px 20px" }} flexItem /> */}
 
-            <TextInputArea />
+            <TextInputArea setMessage={setMessage} />
         </div>
 
     )
 }
+

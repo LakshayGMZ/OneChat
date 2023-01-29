@@ -3,7 +3,7 @@ import PersonIcon from '@mui/icons-material/Person';
 
 export default function MessageBox(props) {
     return (
-        <div className="MessageBoxContainer">
+        <div className={"MessageBoxContainer" + (props.unsent ? " UnsentMessageBox" : "")} id={"message-" + props.id}>
             <div className="MessagePFPArea">
 
                 <PersonIcon fontSize="large" />

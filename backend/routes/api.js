@@ -13,7 +13,6 @@ router.post('/message', function(req, res) {
     const token = req.headers.authorization;
     User.findOne({accessToken: token}, (err, result) => {
         if (!err && result) {
-            console.log(result);
             const data = {
                 content: body.content,
                 timestamp: String(timestamp),

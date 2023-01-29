@@ -26,17 +26,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'client/build')));
-//app.use(errorHandler);
-
-//Middlewares
-
 
 app.use('/api/auth', auth);
 app.use('/api', api)
-
-
-app.get('*', function(req, res) {
-  res.sendFile(path.join(__dirname, 'client/build/index.html'));
-});
 
 module.exports = app;
