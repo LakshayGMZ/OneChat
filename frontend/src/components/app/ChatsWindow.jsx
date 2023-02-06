@@ -4,10 +4,13 @@ import TextInputArea from "./TextInputArea";
 import MessageBox from "./MessageBox";
 import LogoutIcon from '@mui/icons-material/Logout';
 import axios from "axios";
+import messageHandler from "../../websockets/messageHandler";
 
 export default function ChatsWindow() {
     const messagesEndRef = useRef(null);
     const [Messages, setMessage] = useState([]);
+
+    messageHandler(setMessage);
 
     useEffect(() => {
         axios.get("/api/messages/")

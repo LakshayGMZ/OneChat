@@ -126,10 +126,6 @@
     border-radius: 8px;
 }
 
-.UnsentMessageBox {
-    opacity: .5;
-}
-
 .MemberBoxContainer:hover {
     background-color: rgba(0, 0, 0, 0.22);
 }
@@ -152,6 +148,11 @@
     display: flex;
     flex-direction: row;
     margin: 1.2rem 0;
+    overflow-wrap: normal;
+}
+
+.UnsentMessageBox {
+    opacity: .5;
 }
 
 .MessagePFPArea {
@@ -160,10 +161,13 @@
     border-radius: 50%;
     background-color: grey;
     margin-right: 7px;
-    color: whitesmoke
+    color: whitesmoke;
 }
 
 .MessageContentContainer {
+    word-wrap: break-word;
+    max-width: 50vw;
+    height: fit-content;
     background-color: lightgray;
     border-radius: 4px;
     display: flex;
@@ -175,4 +179,14 @@
 .MessageAuthor {
     color: #353935;
     font-weight: 500;
+}
+
+/* =================================================================== */
+/* For mobile version */
+
+@media only screen and (max-width: 900px) {
+    .MarginedRoundedContainer {
+        margin: 0;
+        border-radius: 0px;
+    }
 }

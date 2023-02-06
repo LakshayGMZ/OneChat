@@ -7,6 +7,7 @@ import HowToRegIcon from '@mui/icons-material/HowToReg';
 import React, { ReactDOM, useEffect, useState, } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { isBrowser } from "react-device-detect";
 
 import "../stylesheets/login.css"
 
@@ -56,66 +57,58 @@ function Login() {
 
     return (
 
-        <Paper elevation={24}>
-            <div className="containerLogin">
-                <Grid container>
+        <div className="containerLogin">
+            <div style={{ display: "flex", flexDirection: "column" }}>
 
-                    <Grid item>
-                        <div style={{display: "flex", flexDirection: "column"}}>
+                <TextField
+                    label="Email"
+                    name="email"
+                    value={FormData.email}
+                    onChange={HandleData}
+                    variant="outlined"
+                    type="email"
+                    className="InputBox"
+                />
 
-                            <TextField
-                                label="Email"
-                                name="email"
-                                value={FormData.email}
-                                onChange={HandleData}
-                                variant="outlined"
-                                type="email"
-                                className="InputBox"
-                            />
+                <TextField
+                    label="Password"
+                    name="password"
+                    type="password"
+                    value={FormData.password}
+                    onChange={HandleData}
+                    className="InputBox"
+                />
 
-                            <TextField
-                                label="Password"
-                                name="password"
-                                type="password"
-                                value={FormData.password}
-                                onChange={HandleData}
-                                className="InputBox"
-                            />
-
-                            <Button onClick={OnSubmit} variant="contained" colour="red">Login</Button>
-                        </div>
-                    </Grid>
-
-                    <Divider orientation="vertical"
-                        style={{ margin: "1.7rem 0" }}
-                        flexItem>
-                        <Chip label="OR" />
-                    </Divider>
-
-                    <Grid item style={{ textAlign: "left" }}>
-                        <Button variant="contained"
-                            href="/register"
-                            className="otherLoginMethods"
-                            startIcon={<HowToRegIcon fontSize="large" />}>
-                            Register
-                        </Button>
-                        <br />
-                        <Button variant="contained"
-                            className="otherLoginMethods"
-                            startIcon={<GoogleIcon fontSize="large" />}>
-                            Login with Google
-                        </Button>
-                        <br />
-                        <Button variant="contained"
-                            className="otherLoginMethods"
-                            startIcon={<FacebookIcon fontSize="large" />}>
-                            Login with Facebook
-                        </Button>
-                    </Grid>
-                </Grid>
-
+                <Button onClick={OnSubmit} variant="contained" colour="red">Login</Button>
             </div>
-        </Paper>
+            <Divider
+                orientation={isBrowser ? "vertical" : "horizontal"}
+                style={{ margin: "1.7rem 0" }}
+                flexItem>
+                <Chip label="OR" />
+            </Divider>
+            <div class="otherLoginMethodsContainer">
+                <Button variant="contained"
+                    href="/register"
+                    className="otherLoginMethods"
+                    startIcon={<HowToRegIcon fontSize="large" />}>
+                    Register
+                </Button>
+                <br />
+                <Button variant="contained"
+                    className="otherLoginMethods"
+                    startIcon={<GoogleIcon fontSize="large" />}>
+                    Login with Google
+                </Button>
+                <br />
+                <Button variant="contained"
+                    className="otherLoginMethods"
+                    startIcon={<FacebookIcon fontSize="large" />}>
+                    Login with Facebook
+                </Button>
+            </div>
+
+        </div>
 
     )
 }
