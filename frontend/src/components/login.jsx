@@ -12,8 +12,6 @@ import { isBrowser } from "react-device-detect";
 import "../stylesheets/login.css"
 
 
-
-
 function Login() {
     const [FormData, setFormData] = useState({ email: '', password: '' });
     const navigate = useNavigate();
@@ -30,8 +28,9 @@ function Login() {
     }
 
     function OnSubmit(event) {
-        event.preventDefault();
-        axios.post('/api/auth/login', FormData)
+        if (FormData.email && FormData.password) {
+            event.preventDefault();
+            axios.post('/api/auth/login', FormData)
             .then(res => res.data)
             .then(res => {
                 console.log('res came');
@@ -43,16 +42,17 @@ function Login() {
                     localStorage.setItem('uuid', res.uuid);
                     setFormData({ email: '', password: '' });
                     navigate("/app");
-
+                    
                 } else {
                     console.log('reload');
                     window.location.reload();
-
+                    
                 }
             })
             .catch((error) => {
                 console.log(error);
             });;
+        }
     }
 
     return (
@@ -87,7 +87,7 @@ function Login() {
                 flexItem>
                 <Chip label="OR" />
             </Divider>
-            <div class="otherLoginMethodsContainer">
+            <div className="otherLoginMethodsContainer">
                 <Button variant="contained"
                     href="/register"
                     className="otherLoginMethods"
