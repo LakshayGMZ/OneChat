@@ -5,6 +5,7 @@ import MessageBox from "./MessageBox";
 import LogoutIcon from '@mui/icons-material/Logout';
 import axios from "axios";
 import messageHandler from "../../websockets/messageHandler";
+import WSDisconnect from "../../websockets/disconnect";
 
 export default function ChatsWindow() {
     const messagesEndRef = useRef(null);
@@ -29,6 +30,7 @@ export default function ChatsWindow() {
             <div className="ChatStatusPane">
                 <div className="UserStatusIcon">
                     <IconButton size="large" onClick={() => {
+                        WSDisconnect();
                         localStorage.clear();
                         window.location.reload(false);
                     }}>
