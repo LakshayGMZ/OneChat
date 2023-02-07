@@ -1,5 +1,6 @@
 import React, { useCallback, useContext, useEffect } from "react";
 import { SocketContext } from "./socket";
+import MessageBox from "../components/app/MessageBox";
 
 export default function messageHandler(setMessage) {
 
