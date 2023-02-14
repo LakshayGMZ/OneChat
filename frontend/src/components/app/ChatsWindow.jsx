@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { Divider, IconButton, modalUnstyledClasses, TextField } from "@mui/material";
 import TextInputArea from "./TextInputArea";
 import MessageBox from "./MessageBox";
@@ -6,18 +6,22 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import axios from "axios";
 import messageHandler from "../../websockets/messageHandler";
 import WSDisconnect from "../../websockets/disconnect";
+import { SocketContext } from "../../websockets/socket";
+
+
 
 export default function ChatsWindow() {
     const messagesEndRef = useRef(null);
     const [Messages, setMessage] = useState([]);
+    const socket = useContext(SocketContext);
 
     messageHandler(setMessage);
-
+    
     useEffect(() => {
         axios.get("/api/messages/")
-            .then(res => res.data)
-            .then(res => {
-                console.log(res);
+        .then(res => res.data)
+        .then(res => {
+            console.log(res);
                 setMessage(res.map(message =>
                     <MessageBox author={message.username} content={message.content} id={message.id} key={message.id} />
                 ));
@@ -30,7 +34,7 @@ export default function ChatsWindow() {
             <div className="ChatStatusPane">
                 <div className="UserStatusIcon">
                     <IconButton size="large" onClick={() => {
-                        WSDisconnect();
+                        socket.disconnect();
                         localStorage.clear();
                         window.location.reload(false);
                     }}>
@@ -51,6 +55,6 @@ export default function ChatsWindow() {
             <TextInputArea setMessage={setMessage} />
         </div>
 
-    )
+)
 }
 
