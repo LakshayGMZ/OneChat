@@ -9,23 +9,25 @@ import axios from 'axios'
 import "./stylesheets/index.css"
 
 function App() {
+    axios.defaults.baseURL = import.meta.env.VITE_BASE_URL;
 
-  axios.defaults.baseURL = import.meta.env.VITE_BASE_URL;
-  axios.defaults.headers.common['Authorization'] = localStorage.token;
-  //axios.defaults.baseURL = "";
+    axios.interceptors.request.use(config => {
+        config.headers.Authorization = localStorage.token || '';
+        return config;
+    }, error => Promise.reject(error));
 
 
-  return (
-    <SocketContext.Provider value={socket}>
-      <BrowserRouter>
-        <Routes>
-          <Route index element={<Login />} />
-          <Route path="register" element={<Register />} />
-          <Route path="app" element={<MainApp />} />
-        </Routes>
-      </BrowserRouter>
-    </SocketContext.Provider>
-  )
+    return (
+        <SocketContext.Provider value={socket}>
+            <BrowserRouter>
+                <Routes>
+                    <Route index element={<Login />} />
+                    <Route path="register" element={<Register />} />
+                    <Route path="app" element={<MainApp />} />
+                </Routes>
+            </BrowserRouter>
+        </SocketContext.Provider>
+    )
 }
 
 export default App;
