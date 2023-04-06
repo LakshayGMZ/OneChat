@@ -16,18 +16,19 @@ export default function ChatsWindow() {
     const socket = useContext(SocketContext);
 
     messageHandler(setMessage);
-    
-    useEffect(() => {
-        axios.get("/api/messages/")
-        .then(res => res.data)
-        .then(res => {
-            console.log(res);
-                setMessage(res.map(message =>
-                    <MessageBox author={message.username} content={message.content} id={message.id} key={message.id} />
-                ));
 
-            })
-    }, [])
+    useEffect(() => {
+        if (localStorage.token) {
+            axios.get("/api/messages/")
+                .then(res => res.data)
+                .then(res => {
+                    setMessage(res.map(message =>
+                        <MessageBox author={message.username} content={message.content} id={message.id} key={message.id} />
+                    ));
+
+                })
+        }
+    }, [localStorage.token])
 
     return (
         <div className="ChatWindow">
@@ -55,6 +56,6 @@ export default function ChatsWindow() {
             <TextInputArea setMessage={setMessage} />
         </div>
 
-)
+    )
 }
 
