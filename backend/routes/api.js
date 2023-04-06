@@ -16,7 +16,7 @@ router.post('/message', function(req, res) {
             const data = {
                 content: body.content,
                 timestamp: String(timestamp),
-                uuid: body.uuid,
+                uuid: result.uuid,
                 username: result.username,
                 id: String(timestamp + Math.floor((Math.random() * 1000000) + 1) + Math.floor((Math.random() * 10000) + 1))
             };
